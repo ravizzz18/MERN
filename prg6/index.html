@@ -1,0 +1,20 @@
+<form id="myForm">
+    Name: <input type="text" id="name"><br>
+    Email: <input type="text" id="email"><br>
+    <button type="submit" onclick="SendData()">Submit</button>
+</form>
+
+<script>
+    function SendData(){
+        const data = {
+            name:document.getElementById('name').value,
+            email:document.getElementById('email').value
+        };
+
+        fetch('/Submit',{
+            method : 'POST',
+            headers : {'Content-Type':'application/json'},
+            body : JSON.stringify(data)
+        }).then(res=>res.text()).then(alert);
+    }
+</script>
